@@ -2,13 +2,23 @@ use std::io;
 use std::io::prelude::*;
 use std::fs::File;
 use std::io::BufReader;
+use std::time::Instant;
 
 fn main() {
+    println!("Starting solution");
+    let now = Instant::now();
+
+    solve();
+
+    let elapsed_time = now.elapsed();
+    println!("Execution took {:?} seconds.", elapsed_time);
+}
+
+fn solve() {
     let mut input: Vec<String> = vec![];
     let mut values: Vec<u32> = vec![];
     
     read_file(&mut input).unwrap();
-    
     for line in input {
         get_values(&line, &mut values);
     }
