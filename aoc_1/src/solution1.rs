@@ -1,17 +1,22 @@
 use crate::input;
+use crate::solve::Solve;
 
-pub fn solve() -> u32{
-    let mut input: Vec<String> = vec![];
-    let mut values: Vec<u32> = vec![];
+pub struct Solution1;
+
+impl Solve for Solution1 {
+    fn solve(&self) -> u32{
+        let mut input: Vec<String> = vec![];
+        let mut values: Vec<u32> = vec![];
+        
+        input::read_file(&mut input).unwrap();
+        for line in input {
+            get_values(&line, &mut values);
+        }
     
-    input::read_file(&mut input).unwrap();
-    for line in input {
-        get_values(&line, &mut values);
+        let sum: u32 = values.iter().sum();
+        println!("The solution for solution 1 is: {}", sum);
+        sum
     }
-
-    let sum: u32 = values.iter().sum();
-    println!("The solution is: {}", sum);
-    sum
 }
 
 fn get_values(line: &String, values: &mut Vec<u32>) {
