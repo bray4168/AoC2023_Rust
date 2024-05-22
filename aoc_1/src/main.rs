@@ -1,5 +1,5 @@
 mod solution;
-mod utility;
+mod input;
 use std::time::Instant;
 
 fn main() {
@@ -9,5 +9,5 @@ fn main() {
     solution::solve();
 
     let elapsed_time = now.elapsed();
-    println!("Execution took {:?} seconds.", elapsed_time);
+    println!("Execution took {:?}.", elapsed_time);
 }
