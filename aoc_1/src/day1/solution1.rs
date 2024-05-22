@@ -32,3 +32,15 @@ fn get_values(line: &String, values: &mut Vec<u32>) {
     let value = array[0]*10 + array[1];
     values.push(value);
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::solve::Solve;
+    use crate::day1::Solution1;
+
+    #[test]
+    fn solution_1_test() {
+        let solution = Solution1{};
+        assert_eq!(solution.solve(), 55477);
+    }
+}
