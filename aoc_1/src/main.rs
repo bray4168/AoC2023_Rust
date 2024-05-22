@@ -11,3 +11,13 @@ fn main() {
     let elapsed_time = now.elapsed();
     println!("Execution took {:?}.", elapsed_time);
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::solution;
+
+    #[test]
+    fn solution_test() {
+       assert_eq!(solution::solve(), 55477);
+    }
+}

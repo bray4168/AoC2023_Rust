@@ -1,6 +1,6 @@
 use crate::input;
 
-pub fn solve() {
+pub fn solve() -> u32{
     let mut input: Vec<String> = vec![];
     let mut values: Vec<u32> = vec![];
     
@@ -11,6 +11,7 @@ pub fn solve() {
 
     let sum: u32 = values.iter().sum();
     println!("The answer is: {}", sum);
+    sum
 }
 
 fn check_strings_for_int(string: &str) -> u32{
