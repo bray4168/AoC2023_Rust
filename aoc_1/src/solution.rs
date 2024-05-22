@@ -19,11 +19,8 @@ fn get_values(line: &String, values: &mut Vec<u32>) {
         if character.is_numeric() && character.is_ascii() {
             if array[0] == 0 {
                 array[0] = character.to_digit(10).unwrap();
-                array[1] = character.to_digit(10).unwrap();
             }
-            else {
-                array[1] = character.to_digit(10).unwrap();
-            }
+            array[1] = character.to_digit(10).unwrap();
         }
     }
     let value = array[0]*10 + array[1];
