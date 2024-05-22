@@ -10,7 +10,7 @@ pub fn solve() -> u32{
     }
 
     let sum: u32 = values.iter().sum();
-    println!("The answer is: {}", sum);
+    println!("The solution is: {}", sum);
     sum
 }
 
@@ -29,7 +29,7 @@ fn check_strings_for_int(string: &str) -> u32{
     ];
     for each in int_strings {
         if string.contains(each) {
-            println!("Matched with {}", each);
+            //println!("Matched with {}", each);
         }
     }
     ret
