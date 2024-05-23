@@ -20,16 +20,17 @@ mod tests {
         assert_eq!(solution(input), 281);
     }
 
+    // Test the issue where the same string could combine two numbers i.e. oneight
     #[test]
     fn solution_2_test_combined_numbers() {
-        let input: Vec<String> = vec!["oneeight".to_string(), "oneight".to_string()];
-
-        assert_eq!(solution(input), 36);
+        let input: Vec<String> = vec!["oneeight".to_string(), "oneight".to_string(), "eighthree".to_string(), "sevenine".to_string()];
+        
+        assert_eq!(solution(input), 198);
     }
 
     #[test]
     fn solution_2_test() {
         let solution = Solution2{};
-        assert_eq!(solution.solve(), 55477);
+        assert_eq!(solution.solve(), 54431);
     }
 }

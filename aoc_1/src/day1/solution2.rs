@@ -50,30 +50,41 @@ fn check_strings_for_int(string: &str) -> u32 {
 fn get_values(line: &String, values: &mut Vec<u32>) {
     let mut array: [u32; 2] = [0, 0];
     let mut string: String = Default::default();
+
+    // Get the first value
     for character in line.chars() {
         if character.is_numeric() && character.is_ascii() {
-            if array[0] == 0 {
-                array[0] = character.to_digit(10).unwrap();
-            }
-            array[1] = character.to_digit(10).unwrap();
-
-            // Clean the string we are tracking
-            string = Default::default();
+            array[0] = character.to_digit(10).unwrap();
+            break;
         }
         else {
             string += &character.to_string();
             let num = check_strings_for_int(&string);
             if num != 0 {
-                if array[0] == 0 {
-                    array[0] = num;
-                }
-                array[1] = num;
-
-                // Clean the string we are tracking
-                string = Default::default();
+                array[0] = num;
+                break;
             }
         }
     }
+
+    // Get the first value going backwards
+    let mut string: String = Default::default();
+    for character in line.chars().rev() {
+        if character.is_numeric() && character.is_ascii() {
+            array[1] = character.to_digit(10).unwrap();
+            break;
+        }
+        else {
+            string += &character.to_string();
+            let rev_string: String = string.chars().rev().collect();
+            let num = check_strings_for_int(&rev_string);
+            if num != 0 {
+                array[1] = num;
+                break;
+            }
+        }
+    }
+
     let value = array[0]*10 + array[1];
     values.push(value);
 }
