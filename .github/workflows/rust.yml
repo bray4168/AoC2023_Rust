@@ -17,6 +17,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build and Execute
-      run: cd aoc_1 && cargo run --verbose
+      run: cargo run --verbose
     - name: Tests
-      run: cd aoc_1 && cargo test --verbose
+      run: cargo test --verbose
