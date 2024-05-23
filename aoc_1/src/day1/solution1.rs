@@ -4,19 +4,23 @@ use crate::solve::Solve;
 pub struct Solution1;
 
 impl Solve for Solution1 {
-    fn solve(&self) -> u32{
+    fn solve(&self) -> u32 {
         let mut input: Vec<String> = vec![];
-        let mut values: Vec<u32> = vec![];
         
         input::read_file(&"src/day1/input.txt", &mut input).unwrap();
-        for line in input {
-            get_values(&line, &mut values);
-        }
-    
-        let sum: u32 = values.iter().sum();
-        println!("The solution for solution 1 is: {}", sum);
-        sum
+        solution(input)
     }
+}
+
+fn solution(input: Vec<String>) -> u32 {
+    let mut values: Vec<u32> = vec![];
+    for line in input {
+        get_values(&line, &mut values);
+    }
+
+    let sum: u32 = values.iter().sum();
+    println!("The solution for solution 1 is: {}", sum);
+    sum
 }
 
 fn get_values(line: &String, values: &mut Vec<u32>) {
