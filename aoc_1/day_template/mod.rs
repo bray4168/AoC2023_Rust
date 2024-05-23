@@ -12,6 +12,8 @@ pub struct Day2;
 impl SolveDay for Day2 {
     fn solve_day(&self) {
         let solutions: [Box<dyn Solve>; 2] = [Box::new(Solution1{}), Box::new(Solution2{})];
+        
+        println!("Starting day 1 solutions...");
 
         for solution in solutions.iter() {
             println!("\nStarting solution...");
