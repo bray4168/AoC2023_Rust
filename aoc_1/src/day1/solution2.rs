@@ -1,5 +1,6 @@
 use crate::input;
 use crate::solve::Solve;
+use std::collections::HashMap;
 
 pub struct Solution2;
 
@@ -8,7 +9,7 @@ impl Solve for Solution2 {
         let mut input: Vec<String> = vec![];
         let mut values: Vec<u32> = vec![];
         
-        input::read_file(&mut input).unwrap();
+        input::read_file(&"src/day1/input.txt", &mut input).unwrap();
         for line in input {
             get_values(&line, &mut values);
         }
@@ -19,22 +20,22 @@ impl Solve for Solution2 {
     }
 }
 
-fn check_strings_for_int(string: &str) -> u32{
-    let mut ret = 0;
-    let int_strings: [&str; 9] = [
-        "one",
-        "two",
-        "three",
-        "four",
-        "five",
-        "six",
-        "seven",
-        "eight",
-        "nine",
-    ];
-    for each in int_strings {
+fn check_strings_for_int(string: &str) -> u32 {
+    let ret = 0;
+    let int_strings = HashMap::from([
+        ("one", 1),
+        ("two", 2),
+        ("three", 3),
+        ("four", 4),
+        ("five", 5),
+        ("six", 6),
+        ("seven", 7),
+        ("eight", 8),
+        ("nine", 9),
+    ]);
+    for (each, int) in &int_strings {
         if string.contains(each) {
-            //println!("Matched with {}", each);
+            return *int;
         }
     }
     ret
@@ -54,9 +55,17 @@ fn get_values(line: &String, values: &mut Vec<u32>) {
             string = Default::default();
         }
         else {
-            // Do something to see if we spell a number
             string += &character.to_string();
             let num = check_strings_for_int(&string);
+            if num != 0 {
+                if array[0] == 0 {
+                    array[0] = num;
+                }
+                array[1] = num;
+
+                // Clean the string we are tracking
+                string = Default::default();
+            }
         }
     }
     let value = array[0]*10 + array[1];

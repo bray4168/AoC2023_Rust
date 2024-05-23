@@ -8,7 +8,7 @@ impl Solve for Solution1 {
         let mut input: Vec<String> = vec![];
         let mut values: Vec<u32> = vec![];
         
-        input::read_file(&mut input).unwrap();
+        input::read_file(&"src/day1/input.txt", &mut input).unwrap();
         for line in input {
             get_values(&line, &mut values);
         }
