@@ -5,19 +5,25 @@ use std::collections::HashMap;
 pub struct Solution2;
 
 impl Solve for Solution2 {
-    fn solve(&self) -> u32{
+    fn solve(&self) -> u32 {
         let mut input: Vec<String> = vec![];
-        let mut values: Vec<u32> = vec![];
         
         input::read_file(&"src/day1/input.txt", &mut input).unwrap();
-        for line in input {
-            get_values(&line, &mut values);
-        }
-
-        let sum: u32 = values.iter().sum();
-        println!("The solution for solution 2 is: {}", sum);
-        sum
+        solution(input)
     }
+}
+
+// Pub function so that we can test with other inputs
+pub fn solution(input: Vec<String>) -> u32 {
+    let mut values: Vec<u32> = vec![];
+
+    for line in input {
+        get_values(&line, &mut values);
+    }
+
+    let sum: u32 = values.iter().sum();
+    println!("The solution for solution 2 is: {}", sum);
+    sum
 }
 
 fn check_strings_for_int(string: &str) -> u32 {
@@ -74,12 +80,30 @@ fn get_values(line: &String, values: &mut Vec<u32>) {
 
 #[cfg(test)]
 mod tests {
+    use crate::input;
     use crate::solve::Solve;
     use crate::day1::Solution2;
+    use crate::day1::solution2::solution;
+
+    #[test]
+    fn solution_2_test_input() {
+        let mut input: Vec<String> = vec![];
+        input::read_file(&"src/day1/test_input.txt", &mut input).unwrap();
+
+        assert_eq!(solution(input), 281);
+    }
+
+    #[test]
+    fn solution_2_test_combined_numbers() {
+        let input: Vec<String> = vec!["oneeight".to_string(), "oneight".to_string()];
+
+        assert_eq!(solution(input), 36);
+    }
 
     #[test]
     fn solution_2_test() {
         let solution = Solution2{};
         assert_eq!(solution.solve(), 55477);
     }
+
 }
